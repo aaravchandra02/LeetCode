@@ -17,10 +17,19 @@
 
 
 class Solution:
-    def numJewelsInStones(self, J: str, S: str) -> int:
+    def numJewelsInStones_my(self, J: str, S: str) -> int:
         c = 0
         J = set(J)
         for i in S:
             if i in J:
                 c += 1
         return(c)
+
+    def numJewelsInStones_better(self, J: str, S: str) -> int:
+        total_jewel_stone = 0
+
+        for jewel_stone in J:
+            count = S.count(jewel_stone)
+            total_jewel_stone += count
+
+        return total_jewel_stone
