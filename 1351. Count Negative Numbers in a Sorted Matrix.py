@@ -54,3 +54,19 @@ class Solution:
             else:
                 c += 1
         return cnt
+
+    def countNegatives_n2(self, grid: List[List[int]]) -> int:
+        neg = 0
+        for eachrow in grid:
+
+            count = 0
+            for c in eachrow:
+
+                if c >= 0:
+
+                    count += 1
+                else:
+                    break
+            neg += len(eachrow) - count
+
+        return neg
