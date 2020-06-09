@@ -18,9 +18,9 @@
 
 class Solution:
     def removeVowels(self, S: str) -> str:
-        l = ['a', 'e', 'i', 'o', 'u']
+        l = ('a', 'e', 'i', 'o', 'u')
         s = ""
         for i in S:
             if (i not in l):
-                s = s+i
+                s += i
         return s
