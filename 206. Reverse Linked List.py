@@ -18,19 +18,20 @@ class ListNode:
         self.next = None
 
 
-class SingleLinkedList:
-    def __init__(self):
-        pass
+class SinglyLinkedList:
 
+    def __init__(self, li):
+        self.head = ListNode(li[0])
+        prev = self.head
+        for i in range(1, len(li)):
+            prev.next = ListNode(li[i])
+            prev = prev.next
 
-class Solution:
-    def reverse_SLL_iterative(self, lst):
+    def reverse_SLL_iterative(self):
         # to store previous node
         prev = None
-
         # to store current node
-        head = lst
-
+        head = self.head
         # used as extra container
         tmp = None
 
@@ -47,5 +48,24 @@ class Solution:
         # As now prev points to the reversed list, hence returning it.
         return prev
 
-    def reverse_SLL_recursive(self, list):
-        pass
+    def reverse_SLL_recursive(self, head, prev=None):
+        if not head:
+            return prev
+        tmp = head.next
+        head.next = prev
+        prev = head
+
+        return reverse_SLL_recursive(tmp, prev)
+
+
+# Test Run
+a = SinglyLinkedList([-1, 1, 2, 4, 10])
+ans = a.reverse_SLL_iterative()
+
+# Displaying the linked list as String.
+s_ans = ""
+while(ans):
+    s_ans += str(ans.val) + " --> "
+    ans = ans.next
+s_ans += "None\n"
+print(s_ans)
